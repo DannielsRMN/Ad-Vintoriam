@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Fondo muy claro, similar a la referencia */
+        }
+        /* Basado en la referencia (Azul brillante) */
+        .header-bg {
+            background-color: #ffffff; /* Header blanco para estilo moderno */
+            border-bottom: 1px solid #e2e8f0;
+        }
+        /* Color de acento para textos y botones principales (un azul vibrante) */
+        .primary-color {
+            color: #2563eb; /* Azul 600 */
+        }
+        .primary-bg {
+            background-color: #2563eb;
+        }
+        /* Color de los bordes de las tarjetas para diferenciar, usando tonos más suaves */
+        .border-green { border-color: #10b981; } /* Emerald 500 */
+        .border-blue { border-color: #3b82f6; }  /* Blue 500 */
+        .border-red { border-color: #ef4444; }   /* Red 500 */
