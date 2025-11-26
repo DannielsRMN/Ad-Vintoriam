@@ -27,12 +27,12 @@
         // NOTA: Asumí que tienes una tabla 'transacciones' o 'gastos'
         // =======================================================
         
-        $sql2 = "SELECT g.nombre, g.precioUnitario, g.cantidad, c.nombre as categoria, (g.cantidad * g.precioUnitario) as total FROM gasto g JOIN categoria c ON c.id = g.categoria WHERE g.usuario = :id_user";
+        $sql2 = "SELECT g.nombre, g.precioUnitario, g.cantidad, c.nombre as categoria, (g.cantidad * g.precioUnitario) as total FROM gasto g JOIN categoria c ON c.id = g.categoria WHERE g.usuario = :id_user limit 5";
         $stmt2 = $conn->prepare($sql2);
         $stmt2->bindParam(':id_user', $id_usuario_actual, PDO::PARAM_INT);
         $stmt2->execute();
         
-        $gastos = $stmt2->fetchAll(PDO::FETCH_ASSOC); 
+        $gastos = $stmt2->fetchAll(); 
         
     } catch (PDOException $e) {
         error_log("Error de base de datos en Dashboard: " . $e->getMessage());
@@ -147,7 +147,7 @@
                     <div
                         class="flex flex-col items-start justify-center gap-4 rounded-xl bg-primary p-6 text-white lg:col-span-2">
                         <p class="opacity-80 text-base font-normal">Balance Total Actual</p>
-                        <p class="text-5xl font-bold tracking-tighter"><?php echo $fondosTotal; ?></p>
+                        <p class="text-5xl font-bold tracking-tighter">S/ <?php echo $fondosTotal; ?></p>
                     </div>
                     <!-- Quick Actions Section -->
                     <div class="grid grid-cols-3 gap-4 lg:col-span-1 lg:grid-cols-1">
@@ -186,7 +186,7 @@
                 <!-- SectionHeader -->
                 <h2
                     class="text-[#0d141b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-10">
-                    Historial del Día</h2>
+                    Gastos Recientes</h2>
                 <!-- Recent Activity Table -->
                 <div
                     class="w-full overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
@@ -209,7 +209,7 @@
                                         echo '<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">'.$resultado['categoria'].'</span></td>';
                                         echo '<td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">'.$resultado['precioUnitario'].'</td>';
                                         echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['cantidad'].'</td>';
-                                        echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['total'].'</td>';
+                                        echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400"> S/ '.$resultado['total'].'</td>';
                                         echo '</tr>';
                                     }
                                 ?>
