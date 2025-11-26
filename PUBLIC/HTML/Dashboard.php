@@ -1,3 +1,34 @@
+<?php
+    require_once "../../API/Conexion/Conexion.php";
+    
+    $id_usuario_actual = 1; 
+    $fondosTotal = 0.00;
+
+    try {
+        $conexion = new Conexion();
+        $conn = $conexion -> iniciar();
+
+        $sql = "SELECT fondosTotal FROM usuario WHERE id = :id";
+        $stmt = $conn -> prepare($sql);
+        $stmt -> bindParam(':id', $id_usuario_actual, PDO::PARAM_INT);
+        $stmt -> execute();
+        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+        
+        $sql2 = "SELECT nombre, descripcion, precioUnitario, cantidad FROM usuario WHERE id = :id";
+        $stmt2 -> bindParam(':id', $id_usuario_actual, PDO::PARAM_INT);
+        $stmt2 -> execute();
+        $gastos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+        
+        if ($resultado && isset($resultado['fondosTotal'])) {
+            $fondosTotal = $resultado['fondosTotal']; 
+        }
+
+    } catch (PDOException $e) {
+        error_log("Error de base de datos al obtener fondos: " . $e -> getMessage());
+    }
+?>
+
 <!DOCTYPE html>
 
 <html class="light" lang="es">
@@ -110,7 +141,7 @@
                     <div
                         class="flex flex-col items-start justify-center gap-4 rounded-xl bg-primary p-6 text-white lg:col-span-2">
                         <p class="opacity-80 text-base font-normal">Balance Total Actual</p>
-                        <p class="text-5xl font-bold tracking-tighter">S/ 1,250.70</p>
+                        <p class="text-5xl font-bold tracking-tighter"><?php echo $fondosTotal; ?></p>
                     </div>
                     <!-- Quick Actions Section -->
                     <div class="grid grid-cols-3 gap-4 lg:col-span-1 lg:grid-cols-1">
@@ -157,10 +188,11 @@
                         <table class="w-full text-sm">
                             <thead class="bg-slate-50 text-left text-slate-500 dark:bg-slate-950 dark:text-slate-400">
                                 <tr>
-                                    <th class="px-6 py-3 font-medium">Descripción</th>
+                                    <th class="px-6 py-3 font-medium">Nombre</th>
                                     <th class="px-6 py-3 font-medium">Categoría</th>
-                                    <th class="px-6 py-3 font-medium text-right">Monto</th>
-                                    <th class="px-6 py-3 font-medium text-right">Hora</th>
+                                    <th class="px-6 py-3 font-medium text-right">Precio/Unidad</th>
+                                    <th class="px-6 py-3 font-medium text-right">Cantidad</th>
+                                    <th class="px-6 py-3 font-medium text-right">Total</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
