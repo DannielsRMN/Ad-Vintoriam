@@ -4,24 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Dimesaur</title>
-    <!-- Conectamos con el CSS Profesional -->
     <link rel="stylesheet" href="../CSS/index.css">
 </head>
 <body>
 
     <div class="auth-card">
-        <!-- 
-           IMPORTANTE: Esta ruta asume que:
-           1. Este archivo está en: PUBLIC/HTML/login.html
-           2. La imagen está en: PUBLIC/ASSETS/IMG/logodimesaur.png
-        -->
         <img src="../ASSETS/IMG/logodimesaur.png" alt="Dimesaur Logo" class="logo-img">
         
         <h2>Iniciar Sesión</h2>
         <p class="subtitle">Bienvenido de nuevo a la era del ahorro.</p>
 
-        <!-- Formulario apuntando a la API -->
-        <form action="../../API/Login/Login.php" method="POST">
+        <form action="Dashboard.php" method="GET">
             
             <div class="form-group">
                 <label for="email">Correo Electrónico</label>
@@ -33,7 +26,7 @@
                 <input type="password" id="password" name="password" placeholder="••••••••••••" required>
             </div>
 
-            <a href="Dashboard.php" class="btn btn-primary" role="button">ENTRAR</a>
+            <button type="submit" class="btn btn-primary">INGRESAR</button>
         </form>
 
         <div class="auth-switch">

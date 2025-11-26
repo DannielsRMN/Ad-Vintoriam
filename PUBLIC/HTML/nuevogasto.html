@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Registrar Nuevo Gasto - Dimesaur</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1B4F4A", 
+                        "secondary": "#DDAA33",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        /* FONDO GENERAL (El mismo del Dashboard) */
+        body {
+            background-image: url('../ASSETS/IMG/fondodashboard.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* FONDO ESPECÍFICO DEL FORMULARIO (Tu requerimiento) */
+        .custom-form-bg {
+            background-image: url('../ASSETS/IMG/fondologin.png');
+            background-size: cover;
+            background-position: center;
+            /* Capa blanca al 92% para que sea legible pero se note la textura */
+            background-color: rgba(255, 255, 255, 0.92);
+            background-blend-mode: overlay;
+        }
+    </style>
+</head>
+
+<body class="font-display text-slate-800 dark:text-slate-200">
+    <div class="relative flex min-h-screen w-full">
+        
+        <aside class="flex flex-col w-64 bg-white dark:bg-[#143d39] shadow-md z-10 fixed h-full">
+            <div class="flex items-center justify-center h-24 border-b border-gray-200 dark:border-gray-700 px-4">
+                <div class="flex items-center gap-2">
+                    <img src="../ASSETS/IMG/logodimesaur.png" alt="Logo" class="h-10 w-auto">
+                    <img src="../ASSETS/IMG/dimesaurtext.png" alt="Dimesaur Texto" class="h-6 w-auto object-contain">
+                </div>
+            </div>
+
+            <div class="flex flex-col flex-1 p-4 overflow-y-auto">
+                <div class="flex items-center gap-4 px-3 py-4 mb-4 border-b border-gray-100 dark:border-gray-700">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-gray-200 flex items-center justify-center">
+                         <span class="material-symbols-outlined text-gray-500">person</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <h2 class="text-gray-900 dark:text-white text-sm font-bold">Daniela</h2>
+                        <p class="text-xs text-gray-500 dark:text-gray-300">Huánuco, Perú</p>
+                    </div>
+                </div>
+
+                <nav class="flex-1 space-y-2">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-gray-500 transition" href="Dashboard.php">
+                        <span class="material-symbols-outlined">dashboard</span> Panel General
+                    </a>
+                    
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#1B4F4A]/10 text-[#1B4F4A] dark:text-white font-medium" href="#">
+                        <span class="material-symbols-outlined">add_circle</span> Nuevo Registro
+                    </a>
+                    
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-white/10 transition" href="#">
+                        <span class="material-symbols-outlined">recycling</span> Reciclaje
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-white/10 transition" href="#">
+                        <span class="material-symbols-outlined">psychology</span> Dimesaur AI
+                    </a>
+                </nav>
+
+                <div class="mt-auto pt-4">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-red-500 hover:bg-red-50 transition" href="pantallaInicio.html">
+                        <span class="material-symbols-outlined">logout</span> Cerrar Sesión
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="ml-64 flex-1 flex flex-col min-h-screen bg-white/80 dark:bg-[#101922]/90 backdrop-blur-sm"> 
+            
+            <div class="flex-1 p-8 max-w-7xl mx-auto w-full flex flex-col justify-center items-center">
+                
+                <div class="w-full max-w-2xl mb-6 flex flex-wrap justify-between items-end gap-4">
+                    <div>
+                        <h1 class="text-[#0d141b] dark:text-white text-3xl font-black tracking-tight">
+                            Registrar Nuevo Gasto
+                        </h1>
+                        <p class="text-gray-500 text-sm mt-1">Ingresa los detalles de la transacción manualmente.</p>
+                    </div>
+                    <a href="Dashboard.php" class="text-gray-500 hover:text-red-500 transition flex items-center gap-1 text-sm font-bold bg-white px-4 py-2 rounded-full shadow-sm hover:shadow-md">
+                        <span class="material-symbols-outlined text-lg">close</span> Cancelar Operación
+                    </a>
+                </div>
+
+                <div class="w-full max-w-2xl custom-form-bg rounded-2xl p-8 shadow-2xl border border-white/50 relative overflow-hidden">
+                    
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <span class="material-symbols-outlined text-6xl text-[#1B4F4A]">receipt_long</span>
+                    </div>
+
+                    <form action="Dashboard.php" method="GET" class="space-y-6 relative z-10">
+                        
+                        <div>
+                            <label for="nombre" class="block text-sm font-bold text-gray-800 mb-1">Concepto del Gasto</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="material-symbols-outlined text-gray-500">edit</span>
+                                </div>
+                                <input type="text" id="nombre" name="nombre" required autofocus
+                                    class="pl-10 block w-full rounded-xl border-gray-300 bg-white/60 focus:bg-white focus:border-[#1B4F4A] focus:ring-[#1B4F4A] py-3 shadow-sm transition-all placeholder-gray-400" 
+                                    placeholder="Ej: Mantenimiento de servidores">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="categoria" class="block text-sm font-bold text-gray-800 mb-1">Categoría</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="material-symbols-outlined text-gray-500">category</span>
+                                    </div>
+                                    <select id="categoria" name="categoria" 
+                                        class="pl-10 block w-full rounded-xl border-gray-300 bg-white/60 focus:bg-white focus:border-[#1B4F4A] focus:ring-[#1B4F4A] py-3 shadow-sm transition-all cursor-pointer">
+                                        <option>Operativo</option>
+                                        <option>Marketing</option>
+                                        <option>Transporte</option>
+                                        <option>Tecnología</option>
+                                        <option>Comunidad</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="monto" class="block text-sm font-bold text-gray-800 mb-1">Monto Total (S/)</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="material-symbols-outlined text-gray-500">attach_money</span>
+                                    </div>
+                                    <input type="number" step="0.01" id="monto" name="monto" required 
+                                        class="pl-10 block w-full rounded-xl border-gray-300 bg-white/60 focus:bg-white focus:border-[#1B4F4A] focus:ring-[#1B4F4A] py-3 font-mono font-bold text-lg shadow-sm transition-all text-[#1B4F4A]" 
+                                        placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button type="submit" 
+                                class="w-full flex justify-center items-center gap-2 py-4 px-4 border border-transparent rounded-xl shadow-lg text-sm font-black text-white bg-[#1B4F4A] hover:bg-[#143d39] transform hover:-translate-y-1 transition duration-200">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                CONFIRMAR Y GUARDAR GASTO
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <p class="text-center text-xs text-gray-400 mt-6">
+                    <span class="material-symbols-outlined text-[10px] align-middle">lock</span> 
+                    Transacción segura encriptada por Dimesaur System
+                </p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
