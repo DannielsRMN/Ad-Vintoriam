@@ -86,49 +86,50 @@
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
     <div class="relative flex min-h-screen w-full">
         <!-- SideNavBar -->
-        <aside
-            class="flex h-screen w-64 flex-col justify-between border-r border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-background-dark fixed top-0 left-0">
-            <div class="flex flex-col gap-8">
-                <div class="flex items-center gap-3 px-3 py-2">
-                    <span class="material-symbols-outlined text-primary text-3xl">account_balance_wallet</span>
-                    <h1 class="text-[#0d141b] dark:text-slate-100 text-lg font-bold">MiFinanza</h1>
+        <aside class="flex flex-col w-64 bg-surface-light dark:bg-surface-dark shadow-md">
+            <div class="flex items-center justify-center h-20 border-b border-border-light dark:border-border-dark">
+                <div class="flex items-center gap-3 text-primary">
+                    <img src="../ASSETS/IMG/logodimesaur.png" alt="Logo de Dimesaur" class="h-8 w-auto">
+                    <h1 class="text-xl font-black text-text-light-primary dark:text-text-dark-primary">Dimesaur</h1>
                 </div>
-                <nav class="flex flex-col gap-2">
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary transition-colors hover:bg-primary/30"
-                        href="#">
-                        <span class="material-symbols-outlined">dashboard</span>
-                        <p class="text-sm font-medium">Dashboard</p>
-                    </a>
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-                        href="#">
-                        <span class="material-symbols-outlined">trending_up</span>
-                        <p class="text-sm font-medium">Ingresos</p>
-                    </a>
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-                        href="#">
-                        <span class="material-symbols-outlined">trending_down</span>
-                        <p class="text-sm font-medium">Gastos</p>
-                    </a>
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-                        href="#">
-                        <span class="material-symbols-outlined">bar_chart</span>
-                        <p class="text-sm font-medium">Reportes</p>
-                    </a>
-                    <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
-                        href="#">
-                        <span class="material-symbols-outlined">double_arrow</span>
-                        <p class="text-sm font-medium">Metas</p>
-                    </a>
-                </nav>
             </div>
-            <div class="flex items-center gap-3 border-t border-slate-200 dark:border-slate-800 px-3 pt-4">
-                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                    data-alt="Profile picture of Daniela"
-                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXUeU_dUhDLAGe7cRY3B_qb2kXSTkLlp8bdpnTCu9MIeNrqy73xv5mLQZBgbal-kCAbT08ClUgVWYngqvWXMSkdO-IQFLU_iF7nt4_BG5JFs0PoVihU75-WhPFi8PcZ68HxaardJvgoY8m95_mwT7aqvxOAxuTW_8npAa7-zBu9AWyAu1H0bpobbGabCDw7GcajVWoBa9WO-TwlS_RFVQhq4TbD1O7ofsAI5_fhlC_EiJzPR58-1dymjCgiCaeHjK36754InT9Ng");'>
+            <div class="flex flex-col flex-1 p-4">
+                <div class="flex items-center gap-4 px-3 py-4">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Avatar de usuario" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADSOkR8FqicP9JgjcNyQKqEJ50chkETIlyqYRzn9eWzQmM_qXNCKVPxr6H0uGjLH5JvgkXaxv37P-PbSteqgSd1w3pyDoyGxnUSw6oVs6ThqsJR0fc8SlGdbQOIbYr5bQ1yAy7VDo8pal1SPdw8epwqAUZ1IrxxxWmrJ2KMpT6gx6WUepbistBGNWME3AvT7y5gQxgsAl0UhVeBAyulWyibkBlVTOALImSheXj41zmAerTqubVLr7N4FRWHL_u4W5s14tx2DJ7vA");'></div>
+                    <div class="flex flex-col">
+                        <h2 class="text-text-light-primary dark:text-text-dark-primary text-base font-semibold leading-normal">Usuario</h2>
+                        <p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">Huánuco</p>
+                    </div>
                 </div>
-                <div class="flex flex-col">
-                    <p class="text-slate-900 dark:text-slate-50 text-sm font-medium">Daniela</p>
-                    <p class="text-slate-500 dark:text-slate-400 text-xs">Huánuco</p>
+                <nav class="flex-1 mt-6">
+                    <div class="flex flex-col gap-2">
+                        <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="Dashboard.php">
+                            <span class="material-symbols-outlined">home</span>
+                            <p class="text-sm font-medium leading-normal">Inicio</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+                            <span class="material-symbols-outlined">trending_down</span>
+                            <p class="text-sm font-medium leading-normal">Gastos</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+                            <span class="material-symbols-outlined">trending_up</span>
+                            <p class="text-sm font-medium leading-normal">Ingresos</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+                            <span class="material-symbols-outlined">bar_chart</span>
+                            <p class="text-sm font-medium leading-normal">Reportes</p>
+                        </a>
+                        <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary" href="#">
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+                            <p class="text-sm font-medium leading-normal">Configuración</p>
+                        </a>
+                    </div>
+                </nav>
+                <div class="mt-auto">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-red-500/10 hover:text-red-600 dark:hover:text-red-500 transition-colors" href="#">
+                        <span class="material-symbols-outlined">logout</span>
+                        <p class="text-sm font-medium leading-normal">Cerrar Sesión</p>
+                    </a>
                 </div>
             </div>
         </aside>
