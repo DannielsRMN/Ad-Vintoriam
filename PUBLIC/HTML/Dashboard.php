@@ -27,12 +27,12 @@
         // NOTA: Asumí que tienes una tabla 'transacciones' o 'gastos'
         // =======================================================
         
-        $sql2 = "SELECT g.nombre, g.precioUnitario, g.cantidad, c.nombre as categoria, (g.cantidad * g.precioUnitario) as total FROM gasto g JOIN categoria c ON c.id = g.categoria WHERE g.id = :id_user";
+        $sql2 = "SELECT g.nombre, g.precioUnitario, g.cantidad, c.nombre as categoria, (g.cantidad * g.precioUnitario) as total FROM gasto g JOIN categoria c ON c.id = g.categoria WHERE g.usuario = :id_user";
         $stmt2 = $conn->prepare($sql2);
         $stmt2->bindParam(':id_user', $id_usuario_actual, PDO::PARAM_INT);
         $stmt2->execute();
         
-        $gastos = $stmt2->fetchAll(PDO::FETCH_ASSOC); 
+        $gastos = $stmt2->fetchAll(); 
         
     } catch (PDOException $e) {
         error_log("Error de base de datos en Dashboard: " . $e->getMessage());
