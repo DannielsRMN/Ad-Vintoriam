@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimesaur - Gestión Económica para Huánuco</title>
+    <!-- Incluyendo Tailwind CSS para un diseño moderno y rápido -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración para usar la fuente Inter y un esquema de colores -->
+</head>
+<body class="antialiased">
+
+    <!-- BARRA DE NAVEGACIÓN (HEADER) -->
+    <header class="header-bg shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- LOGO y NOMBRE DEL SOFTWARE -->
+                <a href="#" class="flex items-center space-x-3">
+                    <!-- Se asume que el archivo logodimesaur.png está accesible -->
+                    <img src="logodimesaur.png" alt="Logo Dimesaur" class="h-10 w-auto rounded-full shadow-md p-1 bg-white">
+                    <span class="text-2xl font-extrabold text-gray-800">Dimesaur</span>
+                </a>
+
+                <!-- BOTONES DE ACCIÓN -->
+                <nav class="flex items-center space-x-4">
+                    <!-- En un entorno PHP, estos botones apuntarían a las rutas de autenticación -->
+                    <a href="login.php" class="text-gray-600 hover:text-gray-900 transition duration-300 px-3 py-2 rounded-lg font-medium">
+                        Iniciar Sesión
+                    </a>
+                    <a href="register.php" class="primary-bg text-white hover:bg-blue-700 transition duration-300 font-bold px-4 py-2 rounded-lg shadow-md">
+                        Registrarse
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL (INFORMACIÓN BÁSICA DEL GESTOR) -->
+    <main>
+        <!-- SECCIÓN HERO - Introducción -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    <span class="primary-color">Organiza, Gestiona y Crece</span> <br class="hidden sm:inline"> Tu Economía en Huánuco
+                </h1>
+                <p class="mt-4 text-xl text-gray-500 max-w-3xl mx-auto">
+                    **Dimesaur** es la plataforma web diseñada específicamente para los ciudadanos de Huánuco, facilitando la implementación de una organización y gestión económica sólida. Simplifica el seguimiento de tus gastos e ingresos y te ayuda a planificar tu futuro financiero.
+                </p>
+                <!-- Botón de Llamada a la Acción -->
+                <div class="mt-10">
+                    <a href="register.php" class="inline-block primary-bg text-white text-lg font-semibold px-10 py-4 rounded-xl shadow-xl transform transition duration-300 hover:scale-[1.02] hover:shadow-2xl">
+                        ¡Empieza a Mejorar Hoy!
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE TARJETAS - Beneficios, Uso e Impacto -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">¿Por Qué Usar Dimesaur?</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- TARJETA 1: BENEFICIOS CLAVE -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-green">
+                        <div class="primary-color text-4xl mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 primary-color mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V6m0 4v2m0 2v2m-6-10h12a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Control Total de Finanzas</h3>
+                        <ul class="text-gray-600 space-y-2 list-none">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Visualiza tus ingresos y egresos en tiempo real.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Crea presupuestos personalizados por categoría.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Identifica fugas de dinero y ahorra más fácilmente.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- TARJETA 2: MANERAS DE USO Y FÁCIL ACCESO -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-blue">
+                        <div class="primary-color text-4xl mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 primary-color mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L19.5 7.25m-6.07 6.07a4 4 0 10-5.657-5.657 4 4 0 005.657 5.657z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Simple y Accesible para Todos</h3>
+                        <ul class="text-gray-600 space-y-2 list-none">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Interfaz intuitiva, ideal para usuarios de Huánuco de todas las edades.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Acceso desde cualquier dispositivo: móvil, tablet o PC.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Registro rápido de transacciones en menos de 10 segundos.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- TARJETA 3: IMPACTO EN HUÁNUCO (Énfasis local) -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-red">
+                        <div class="primary-color text-4xl mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 primary-color mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.72a4 4 0 01-5.023 1.127 4 4 0 01-.194-5.023l3.6-4.689a4 4 0 015.023-.194 4 4 0 01.194 5.023L17.657 16.72zM4 14.997H11" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Foco en la Economía Local</h3>
+                        <ul class="text-gray-600 space-y-2 list-none">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Mejora de la cultura financiera en la región de Huánuco.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Datos y análisis adaptados a las necesidades del ciudadano huanuqueño.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                <p>Una herramienta para el progreso económico personal y comunitario.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE TESTIMONIOS (Opcional, de ejemplo) -->
+        <section class="py-16 bg-white">
+            <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <blockquote class="text-2xl italic font-medium text-gray-700">
+                    "Desde que uso Dimesaur, mis gastos en el mercado de Huánuco están bajo control. ¡Es simple y me ayuda mucho!"
+                </blockquote>
+                <p class="mt-4 text-lg font-semibold primary-color">- Juan P., Comerciante de Huánuco</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER BÁSICO -->
+    <footer class="bg-gray-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <p class="text-sm">&copy; 2025 Dimesaur. Todos los derechos reservados.</p>
+            <p class="text-xs mt-2 text-gray-400">
+                Proyecto de Implementación de Plataforma Web para la Gestión Económica en Huánuco.
+            </p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Contacto</a>
+                <span class="text-gray-500">|</span>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Aquí es donde se incluirían los scripts JS/PHP para funcionalidad -->
+    <script>
+        // Lógica de PHP (ejemplo):
+        // En un archivo .php, el código del servidor se ejecutaría aquí.
+        // Por ejemplo, para verificar la sesión del usuario.
+        /*
+        <?php
+            // if (isset($_SESSION['user_id'])) {
+            //     // Redirigir al dashboard si ya está logueado
+            //     header('Location: dashboard.php');
+            //     exit();
+            // }
+        ?>
+        */
+    </script>
+</body>
+</html>
