@@ -1,3 +1,44 @@
+<?php
+    require_once "../../API/Conexion/Conexion.php";
+    
+    $id_usuario_actual = 1; 
+    $fondosTotal = 0.00;
+    $gastos = [];
+
+    try {
+        $conexion = new Conexion();
+        $conn = $conexion->iniciar(); // Usaremos solo $conn para ambas consultas
+        
+        // =======================================================
+        // PRIMERA CONSULTA: Obtener el Saldo Total (fondosTotal)
+        // =======================================================
+        $sql1 = "SELECT fondosTotal FROM usuario WHERE id = :id_user";
+        $stmt1 = $conn->prepare($sql1);
+        $stmt1->bindParam(':id_user', $id_usuario_actual, PDO::PARAM_INT);
+        $stmt1->execute();
+        $resultado = $stmt1->fetch(PDO::FETCH_ASSOC);
+        
+        if ($resultado && isset($resultado['fondosTotal'])) {
+            $fondosTotal = $resultado['fondosTotal']; 
+        }
+
+        // =======================================================
+        // SEGUNDA CONSULTA: Obtener el Historial de Gastos
+        // NOTA: Asumí que tienes una tabla 'transacciones' o 'gastos'
+        // =======================================================
+        
+        $sql2 = "SELECT descripcion, monto, fecha FROM transacciones WHERE idUsuario = :id_user ORDER BY fecha DESC LIMIT 5";
+        $stmt2 = $conn->prepare($sql2);
+        $stmt2->bindParam(':id_user', $id_usuario_actual, PDO::PARAM_INT);
+        $stmt2->execute();
+        
+        $gastos = $stmt2->fetchAll(PDO::FETCH_ASSOC); 
+        
+    } catch (PDOException $e) {
+        error_log("Error de base de datos en Dashboard: " . $e->getMessage());
+    }
+?>
+
 <!DOCTYPE html>
 
 <html class="light" lang="es">
@@ -110,7 +151,7 @@
                     <div
                         class="flex flex-col items-start justify-center gap-4 rounded-xl bg-primary p-6 text-white lg:col-span-2">
                         <p class="opacity-80 text-base font-normal">Balance Total Actual</p>
-                        <p class="text-5xl font-bold tracking-tighter">S/ 1,250.70</p>
+                        <p class="text-5xl font-bold tracking-tighter"><?php echo $fondosTotal; ?></p>
                     </div>
                     <!-- Quick Actions Section -->
                     <div class="grid grid-cols-3 gap-4 lg:col-span-1 lg:grid-cols-1">
@@ -157,57 +198,25 @@
                         <table class="w-full text-sm">
                             <thead class="bg-slate-50 text-left text-slate-500 dark:bg-slate-950 dark:text-slate-400">
                                 <tr>
-                                    <th class="px-6 py-3 font-medium">Descripción</th>
+                                    <th class="px-6 py-3 font-medium">Nombre</th>
                                     <th class="px-6 py-3 font-medium">Categoría</th>
-                                    <th class="px-6 py-3 font-medium text-right">Monto</th>
-                                    <th class="px-6 py-3 font-medium text-right">Hora</th>
+                                    <th class="px-6 py-3 font-medium text-right">Precio/Unidad</th>
+                                    <th class="px-6 py-3 font-medium text-right">Cantidad</th>
+                                    <th class="px-6 py-3 font-medium text-right">Total</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                                <tr class="text-slate-700 dark:text-slate-300">
-                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Café en "El
-                                        Buen Sabor"</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">Comida</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">- S/ 12.50
-                                    </td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">09:15 AM</td>
-                                </tr>
-                                <tr class="text-slate-700 dark:text-slate-300">
-                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Pasaje en bus
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900/50 dark:text-blue-300">Transporte</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">- S/ 2.00
-                                    </td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">08:30 AM</td>
-                                </tr>
-                                <tr class="text-slate-700 dark:text-slate-300">
-                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Adelanto de
-                                        sueldo</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/50 dark:text-green-300">Ingresos</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right font-mono text-green-600 dark:text-green-400">+ S/
-                                        500.00</td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">08:00 AM</td>
-                                </tr>
-                                <tr class="text-slate-700 dark:text-slate-300">
-                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Compra en
-                                        minimarket</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/50 dark:text-purple-300">Compras</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">- S/ 45.80
-                                    </td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">Ayer</td>
-                                </tr>
+                                <?php
+                                    foreach ($gastos as $resultado) {
+                                        echo '<tr class="text-slate-700 dark:text-slate-300">';
+                                        echo '<td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">'.$resultado['nombre'].'</td>';
+                                        echo '<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">'.$resultado['categoria'].'</span></td>';
+                                        echo '<td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">'.$resultado['precioUnitario'].'</td>';
+                                        echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['cantidad'].'/td>';
+                                        echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['cantidad'].'</td>';
+                                        echo '</tr>';
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
