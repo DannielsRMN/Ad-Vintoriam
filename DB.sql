@@ -9,6 +9,7 @@ Create table usuario(
     limiteDiario decimal(5,2),
     presupuesto decimal(8,2),
     telefono varchar(9) not null,
+    ciudad varchar(50) not null,
     fondosTotal decimal(10,2) not null default (0)
 );
 
