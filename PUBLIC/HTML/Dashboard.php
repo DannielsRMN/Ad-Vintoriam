@@ -27,7 +27,7 @@
         // NOTA: Asumí que tienes una tabla 'transacciones' o 'gastos'
         // =======================================================
         
-        $sql2 = "SELECT descripcion, monto, fecha FROM transacciones WHERE idUsuario = :id_user ORDER BY fecha DESC LIMIT 5";
+        $sql2 = "SELECT g.nombre, g.precioUnitario, g.cantidad, c.nombre as categoria, (g.cantidad * g.precioUnitario) as total FROM gasto g JOIN categoria c ON c.id = g.categoria WHERE g.id = :id_user";
         $stmt2 = $conn->prepare($sql2);
         $stmt2->bindParam(':id_user', $id_usuario_actual, PDO::PARAM_INT);
         $stmt2->execute();
@@ -212,8 +212,8 @@
                                         echo '<td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">'.$resultado['nombre'].'</td>';
                                         echo '<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">'.$resultado['categoria'].'</span></td>';
                                         echo '<td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">'.$resultado['precioUnitario'].'</td>';
-                                        echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['cantidad'].'/td>';
                                         echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['cantidad'].'</td>';
+                                        echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['total'].'</td>';
                                         echo '</tr>';
                                     }
                                 ?>
