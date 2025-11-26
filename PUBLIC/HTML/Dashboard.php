@@ -3,29 +3,39 @@
     
     $id_usuario_actual = 1; 
     $fondosTotal = 0.00;
+    $gastos = [];
 
     try {
         $conexion = new Conexion();
-        $conn = $conexion -> iniciar();
-
-        $sql = "SELECT fondosTotal FROM usuario WHERE id = :id";
-        $stmt = $conn -> prepare($sql);
-        $stmt -> bindParam(':id', $id_usuario_actual, PDO::PARAM_INT);
-        $stmt -> execute();
-        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+        $conn = $conexion->iniciar(); // Usaremos solo $conn para ambas consultas
         
-        $sql2 = "SELECT nombre, descripcion, precioUnitario, cantidad FROM usuario WHERE id = :id";
-        $stmt2 -> bindParam(':id', $id_usuario_actual, PDO::PARAM_INT);
-        $stmt2 -> execute();
-        $gastos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-
+        // =======================================================
+        // PRIMERA CONSULTA: Obtener el Saldo Total (fondosTotal)
+        // =======================================================
+        $sql1 = "SELECT fondosTotal FROM usuario WHERE id = :id_user";
+        $stmt1 = $conn->prepare($sql1);
+        $stmt1->bindParam(':id_user', $id_usuario_actual, PDO::PARAM_INT);
+        $stmt1->execute();
+        $resultado = $stmt1->fetch(PDO::FETCH_ASSOC);
         
         if ($resultado && isset($resultado['fondosTotal'])) {
             $fondosTotal = $resultado['fondosTotal']; 
         }
 
+        // =======================================================
+        // SEGUNDA CONSULTA: Obtener el Historial de Gastos
+        // NOTA: Asumí que tienes una tabla 'transacciones' o 'gastos'
+        // =======================================================
+        
+        $sql2 = "SELECT descripcion, monto, fecha FROM transacciones WHERE idUsuario = :id_user ORDER BY fecha DESC LIMIT 5";
+        $stmt2 = $conn->prepare($sql2);
+        $stmt2->bindParam(':id_user', $id_usuario_actual, PDO::PARAM_INT);
+        $stmt2->execute();
+        
+        $gastos = $stmt2->fetchAll(PDO::FETCH_ASSOC); 
+        
     } catch (PDOException $e) {
-        error_log("Error de base de datos al obtener fondos: " . $e -> getMessage());
+        error_log("Error de base de datos en Dashboard: " . $e->getMessage());
     }
 ?>
 
@@ -200,45 +210,11 @@
                                     <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Café en "El
                                         Buen Sabor"</td>
                                     <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">Comida</span>
+                                        <span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">Comida</span>
                                     </td>
-                                    <td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">- S/ 12.50
-                                    </td>
+                                    <td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">- S/ 12.50</td>
                                     <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">09:15 AM</td>
-                                </tr>
-                                <tr class="text-slate-700 dark:text-slate-300">
-                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Pasaje en bus
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900/50 dark:text-blue-300">Transporte</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">- S/ 2.00
-                                    </td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">08:30 AM</td>
-                                </tr>
-                                <tr class="text-slate-700 dark:text-slate-300">
-                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Adelanto de
-                                        sueldo</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/50 dark:text-green-300">Ingresos</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right font-mono text-green-600 dark:text-green-400">+ S/
-                                        500.00</td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">08:00 AM</td>
-                                </tr>
-                                <tr class="text-slate-700 dark:text-slate-300">
-                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Compra en
-                                        minimarket</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/50 dark:text-purple-300">Compras</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">- S/ 45.80
-                                    </td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">Ayer</td>
+                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">09:15 AM</td>
                                 </tr>
                             </tbody>
                         </table>
