@@ -206,16 +206,17 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                                <tr class="text-slate-700 dark:text-slate-300">
-                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">Café en "El
-                                        Buen Sabor"</td>
-                                    <td class="px-6 py-4">
-                                        <span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">Comida</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">- S/ 12.50</td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">09:15 AM</td>
-                                    <td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">09:15 AM</td>
-                                </tr>
+                                <?php
+                                    foreach ($gastos as $resultado) {
+                                        echo '<tr class="text-slate-700 dark:text-slate-300">';
+                                        echo '<td class="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">'.$resultado['nombre'].'</td>';
+                                        echo '<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">'.$resultado['categoria'].'</span></td>';
+                                        echo '<td class="px-6 py-4 text-right font-mono text-red-600 dark:text-red-400">'.$resultado['precioUnitario'].'</td>';
+                                        echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['cantidad'].'/td>';
+                                        echo '<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">'.$resultado['cantidad'].'</td>';
+                                        echo '</tr>';
+                                    }
+                                ?>
                             </tbody>
                         </table>
                     </div>
