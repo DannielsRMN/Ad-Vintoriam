@@ -8,6 +8,7 @@ Create table usuario(
     fullname varchar(150) null,
     limiteDiario decimal(5,2),
     presupuesto decimal(8,2),
+    telefono varchar(9) not null,
     fechaIngreso date,
     fechaReporte date
 );

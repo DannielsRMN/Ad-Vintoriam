@@ -1,0 +1,13 @@
+body{
+    width: 100vw;
+    height: auto;
+
+    overflow-x: hidden;
+}
+
+.left{
+    width: 30%;
+    height: auto;
+    
+    background-color: aquamarine;
+}
