@@ -9,7 +9,7 @@
 
         public function __construct(
             string $host = "localhost",
-            string $dbname = "tecnostore_db",
+            string $dbname = "dimesaur",
             string $username = "root",
             string $password = ""
         ) {
