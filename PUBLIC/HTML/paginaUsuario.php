@@ -98,6 +98,7 @@
             </div>
         </div>
     </aside>
+    
     <main class="flex-1 p-6 lg:p-10">
         <div class="max-w-4xl mx-auto">
             <header class="mb-8">
