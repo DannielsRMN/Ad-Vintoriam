@@ -54,7 +54,7 @@
     <aside class="flex flex-col w-64 bg-surface-light dark:bg-surface-dark shadow-md">
         <div class="flex items-center justify-center h-20 border-b border-border-light dark:border-border-dark">
             <div class="flex items-center gap-3 text-primary">
-                <img src="img/LOGO.png" alt="Logo de Dimesaur" class="h-8 w-auto">
+                <img src="../ASSETS/IMG/logodimesaur.png" alt="Logo de Dimesaur" class="h-8 w-auto">
                 <h1 class="text-xl font-black text-text-light-primary dark:text-text-dark-primary">Dimesaur</h1>
             </div>
         </div>
@@ -196,66 +196,5 @@
     <span>Error al actualizar.</span>
 </div>
 
-<script>
-    function handleUpdate(event) {
-        event.preventDefault(); // Evita el envío del formulario por defecto
-
-        // 1. Obtener los valores de los campos
-        const username = document.getElementById('id_username').value;
-        const password = document.getElementById('id_password').value;
-        const confirmPassword = document.getElementById('id_confirm_password').value; // Usado solo para validación en el cliente
-        const fullname = document.getElementById('id_fullname').value;
-        const limiteDiario = document.getElementById('id_limiteDiario').value;
-        const presupuesto = document.getElementById('id_presupuesto').value;
-        const telefono = document.getElementById('id_telefono').value;
-        const fondosTotal = document.getElementById('id_fondosTotal').value;
-        const diaReporte = document.getElementById('id_diaReporte').value;
-        
-        // 2. Validación de Contraseñas (Simulación)
-        if (password !== confirmPassword) {
-            showToast('error', 'Las contraseñas no coinciden.');
-            return; 
-        }
-
-        // 3. Construir el objeto de datos para enviar al servidor
-        const userData = {
-            username: username, // Clave de búsqueda
-            // Datos a actualizar
-            password_hash: password, // El backend debería hashear esto
-            fullname: fullname,
-            limiteDiario: limiteDiario,
-            presupuesto: presupuesto,
-            telefono: telefono,
-            fondosTotal: fondosTotal,
-            fechaReporte: diaReporte
-        };
-
-        // 4. Simulación de la petición de actualización (UPDATE) al servidor
-        console.log("Simulando envío de datos para actualizar:", userData);
-
-        // Simulación de éxito después de un breve retraso
-        setTimeout(() => {
-            showToast('success', '¡Perfil actualizado correctamente!');
-        }, 500);
-    }
-    
-    function showToast(type, message) {
-        const toastId = type === 'success' ? 'toast-success' : 'toast-error';
-        const toast = document.getElementById(toastId);
-        const messageSpan = toast.querySelector('span:last-child');
-        
-        // Asegurarse de que solo uno es visible
-        document.getElementById('toast-success').style.opacity = '0';
-        document.getElementById('toast-error').style.opacity = '0';
-
-        messageSpan.textContent = message;
-        toast.style.opacity = '1';
-        
-        // Ocultar el toast después de 4 segundos
-        setTimeout(() => {
-            toast.style.opacity = '0';
-        }, 4000);
-    }
-</script>
 </body>
 </html>
