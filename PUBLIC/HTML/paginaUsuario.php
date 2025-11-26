@@ -22,7 +22,7 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#10B981",
+                        "primary": "#1B4F4A",
                         "secondary": "#F59E0B",
                         "background-light": "#F8F9FA",
                         "background-dark": "#101922",
@@ -62,7 +62,7 @@
             <div class="flex items-center gap-4 px-3 py-4">
                 <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Avatar de usuario" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADSOkR8FqicP9JgjcNyQKqEJ50chkETIlyqYRzn9eWzQmM_qXNCKVPxr6H0uGjLH5JvgkXaxv37P-PbSteqgSd1w3pyDoyGxnUSw6oVs6ThqsJR0fc8SlGdbQOIbYr5bQ1yAy7VDo8pal1SPdw8epwqAUZ1IrxxxWmrJ2KMpT6gx6WUepbistBGNWME3AvT7y5gQxgsAl0UhVeBAyulWyibkBlVTOALImSheXj41zmAerTqubVLr7N4FRWHL_u4W5s14tx2DJ7vA");'></div>
                 <div class="flex flex-col">
-                    <h2 class="text-text-light-primary dark:text-text-dark-primary text-base font-semibold leading-normal">Usuario</h2>
+                    <h2 class="text-text-light-primary dark:text-text-dark-primary text-base font-semibold leading-normal">Daniela</h2>
                     <p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">Huánuco</p>
                 </div>
             </div>
@@ -72,19 +72,19 @@
                         <span class="material-symbols-outlined">home</span>
                         <p class="text-sm font-medium leading-normal">Inicio</p>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="paginaGastos.php">
                         <span class="material-symbols-outlined">trending_down</span>
                         <p class="text-sm font-medium leading-normal">Gastos</p>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="paginaIngresos.php">
                         <span class="material-symbols-outlined">trending_up</span>
                         <p class="text-sm font-medium leading-normal">Ingresos</p>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary dark:hover:text-primary transition-colors" href="paginaReportes.php">
                         <span class="material-symbols-outlined">bar_chart</span>
                         <p class="text-sm font-medium leading-normal">Reportes</p>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary" href="paginaUsuario.php">
                         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
                         <p class="text-sm font-medium leading-normal">Configuración</p>
                     </a>
